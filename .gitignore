@@ -1,3 +1,6 @@
+static_cdn_test/static/admin
+*.jpg
+*.PNG
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
