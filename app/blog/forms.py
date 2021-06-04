@@ -1,6 +1,7 @@
 from django import forms
 
 from .models import BlogPost
+from comment.models import Comment
 
 
 class BlogPostForm(forms.Form):
@@ -23,3 +24,9 @@ class BlogPostModelForm(forms.ModelForm):
         if queryset.exists():
             raise forms.ValidationError("This title has already been used. Please try again.")
         return title
+
+
+class CommentModelForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment']

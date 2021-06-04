@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.admin.views.decorators import staff_member_required
 
 from .models import BlogPost
+from comment.models import Comment
 from .forms import BlogPostModelForm
 
 
@@ -32,8 +33,9 @@ def blog_post_create_view(request):
 
 def blog_post_detail_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
+    qs = Comment.objects.all()
     template_name = 'blog/detail.html'
-    context = {'object': obj}
+    context = {'object': obj, 'queryset': qs}
     return render(request, template_name, context)
 
 
